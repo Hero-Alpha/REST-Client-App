@@ -12,7 +12,7 @@ export default function HistoryTable({ refresh }) {
     const fetchLogs = async (pageNumber = 1) => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/api/history?page=${pageNumber}&limit=${limit}`);
+            const res = await axios.get(`https://rest-client-app.onrender.com/api/history?page=${page}&limit=${limit}`);
             setLogs(res.data.logs);
             setTotal(res.data.total);
             setPage(res.data.page);
