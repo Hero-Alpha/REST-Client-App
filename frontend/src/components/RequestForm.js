@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../styles/main.css";
 
-export default function RequestForm({ onResponse , onRequestComplete}) {
+export default function RequestForm({ onResponse, onRequestComplete }) {
   const [url, setUrl] = useState("");
   const [method, setMethod] = useState("GET");
   const [body, setBody] = useState("");
@@ -10,11 +10,12 @@ export default function RequestForm({ onResponse , onRequestComplete}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/request", {
+      const res = await axios.post("https://rest-client-app.onrender.com/api/request", {
         url,
         method,
         body: body ? JSON.parse(body) : null,
       });
+
       onResponse(res.data);
       if (onRequestComplete) onRequestComplete();
     } catch (err) {
